@@ -3,8 +3,8 @@ pipeline {
    stages {
       stage('Deploying from release branch')  {
         steps{ 
-			sh 'git config --global "vakhrinavo@gmail.com"'
-			sh 'git config --global "ViktoriiaVakhrina"'
+			sh 'git config --global user.email vakhrinavo@gmail.com'
+			sh 'git config --global user.name "ViktoriiaVakhrina"'
 			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 			sh 'git checkout main'
 			sh 'git merge origin/release_${RELEASE_NUMBER}'		
