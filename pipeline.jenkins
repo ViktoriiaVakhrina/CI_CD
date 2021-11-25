@@ -1,0 +1,17 @@
+pipeline {
+   agent any
+   stages {
+	withPythonEnv('python3') {
+      stage('Environment setup') {
+        steps{      
+			sh 'pip install -r requirements.txt'
+		}
+        }
+	stage('Test execution') {
+        steps{      
+			sh 'python3 tests.py'
+        }
+		}
+		}
+  }
+} 
