@@ -14,7 +14,7 @@ pipeline {
 		success {
 			sh 'git checkout develop'
 			sh 'git merge origin/feature1'
-			withCredentials ([usernameColonPassword(credentialsID:'Git_Creds', variable: 'creds')]) {
+			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 				sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
 			}
 		}
