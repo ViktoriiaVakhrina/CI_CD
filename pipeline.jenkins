@@ -13,7 +13,7 @@ pipeline {
 	post {
 		success {
 			sh 'git checkout develop'
-			withCredentials([usernamePassword(credentialsId: "${fd36f81c-bd18-4d6b-a32d-954dcf3d3e76}", passwordVariable: 'Password', usernameVariable: 'Username')]) {
+			withCredentials([usernamePassword(credentialsId: "${Git_Creds}", passwordVariable: 'Password', usernameVariable: 'Username')]) {
                         sh "echo ${Username}|||||||${Password}" 
                     }
 			sh 'git merge origin/feature1'
