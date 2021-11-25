@@ -17,6 +17,7 @@ pipeline {
                         sh "echo ${Username}|||||||${Password}" 
                     }
 			sh 'git merge origin/feature1'
+			sh 'cd /var/jenkins_home/workspace/pipeline_main'
 			sh 'git push git@github.com:ViktoriiaVakhrina/CI_CD.git'
 			
 		}
