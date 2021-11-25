@@ -9,11 +9,11 @@ pipeline {
 			}
 		}
 	}
-		post {
-			success {
-				sh 'git checkout develop'
-				sh 'git merge feature1'
-			}
+	}
+	post {
+		success {
+			sh 'git checkout develop'
+			sh 'git merge feature1'
 		}
 	}
 }
