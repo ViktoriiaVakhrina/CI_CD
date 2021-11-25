@@ -15,4 +15,4 @@ def test_Tables(connection):
 
 def test_County_total_records (connection):
     res_Country_total = connection.execute('SELECT COUNT(1) FROM Country').fentone()
-    assert res_Country_total == 10
+    assert res_Country_total == 11
