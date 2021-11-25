@@ -13,3 +13,6 @@ def test_Tables(connection):
     assert res_list == ['Player_Attributes','Player','Match','League','Country',
                       'Team','Team_Attributes']
 
+def test_County_total_records (connection):
+    res_Country_total = connection.execute('SELECT COUNT(1) FROM Country').fentone()
+    assert res_Country_total == 11
