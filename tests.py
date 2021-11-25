@@ -13,3 +13,10 @@ def test_Tables(connection):
     assert res_list == ['sqlite_sequence','Player_Attributes','Player','Match','League','Country',
                       'Team','Team_Attributes']
 
+def test_County_total_records (connection):
+    res_Country_total = connection.execute('SELECT COUNT(1) FROM Country').fetchone()
+    assert res_Country_total[0] == 11
+
+def test_League_total_records (connection):
+    res_League_total = connection.execute('SELECT COUNT(1) FROM League').fetchone()
+    assert res_League_total[0] == 11
