@@ -15,4 +15,4 @@ def connection():
 
 def test_County_total_records (connection):
     res_Country_total = connection.execute('SELECT COUNT(1) FROM Country').fetchone()
-    assert res_Country_total == 11
+    assert res_Country_total[0] == 11
