@@ -14,7 +14,7 @@ pipeline {
 		success {
 			sh 'git checkout develop'
 			sh 'git merge origin/feature1'
-			sh 'git push'
+			sh 'git push git@github.com:ViktoriiaVakhrina/CI_CD.git'
 		}
 	}
 }
