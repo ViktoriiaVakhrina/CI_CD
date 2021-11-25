@@ -21,7 +21,7 @@ pipeline {
 	stage ('Deleting release branch') {
 		steps {
 			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
-				sh 'git push origin --delete release_${RELEASE_NUMBER}'
+				sh 'git push origin https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git --delete release_${RELEASE_NUMBER}'
 		}
 		}
 	}
