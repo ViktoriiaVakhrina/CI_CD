@@ -1,0 +1,30 @@
+pipeline {
+   agent any
+   stages {
+      stage('Deploying from release branch')  {
+        steps{ 
+			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
+			sh 'git checkout main'
+			sh 'git merge origin/release_${RELEASE_NUMBER}'		
+			sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
+			}
+		}
+	}
+	stage ('Tests execution') {
+		steps {
+				echo 'Tests execution...'
+		}
+	}
+	stage ('Deleting release branch') {
+		steps {
+			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
+				sh 'git push origin --delete release_${RELEASE_NUMBER}'
+		}
+		}
+	}
+}
+}
+
+
+
+
