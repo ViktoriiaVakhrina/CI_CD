@@ -13,7 +13,7 @@ pipeline {
 	post {
 		success {
 			sh 'git checkout develop'
-			sh 'git merge feature1'
+			sh 'git merge origin/feature1'
 		}
 	}
 }
