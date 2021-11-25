@@ -3,7 +3,7 @@ import sqlite3
 
 @pytest.fixture(scope="session")
 def connection():
-    conn = sqlite3.connect('database.sqlite')
+    conn = sqlite3.connect('C:/Users/Viktoriia_Vakhrina/PycharmProjects/CICD/database.sqlite')
     curs = conn.cursor()
     return curs
 
