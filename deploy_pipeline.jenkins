@@ -22,7 +22,7 @@ pipeline {
 			steps {
 				withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 					sh 'git config --global credential.helper "cache --timeout=3600" '
-					sh 'git push origin --delete ${RELEASE_NUMBER}'
+					sh 'git config remote.origin.url'
 					}
 				}
 		}
