@@ -11,6 +11,7 @@ pipeline {
 				sh 'git checkout main'
 				sh 'git merge origin/${RELEASE_NUMBER}'	
 				sh 'git pull origin main'
+				sh 'ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts'
 				sh 'git push git@github.com:ViktoriiaVakhrina/CI_CD.git'
 			}
 		}
