@@ -18,11 +18,11 @@ pipeline {
 				}
 			}
 			}
-		stage ('Merging main to develop'){
+		stage ('Merging release and develop'){
 			steps {
 			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 					sh 'git checkout develop'
-					sh 'git merge origin/main'	
+					sh 'git merge origin/${RELEASE_NUMBER}'	
 					sh 'git pull origin develop'
 					sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
 					}
