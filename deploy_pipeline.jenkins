@@ -1,3 +1,6 @@
+sh 'git push origin --delete ${RELEASE_NUMBER}'
+
+
 pipeline {
    agent any
    stages {
@@ -8,17 +11,15 @@ pipeline {
 		}
 		stage('Deploying from release branch')  {
 			steps{ 
+				sh 'git config --global user.email vakhrinavo@gmail.com'
+				sh 'git config --global user.name "ViktoriiaVakhrina"'
+				withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 				sh 'git checkout main'
 				sh 'git merge origin/${RELEASE_NUMBER}'	
 				sh 'git pull origin main'
-				sh 'ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts'
-				sh 'git push git@github.com:ViktoriiaVakhrina/CI_CD.git'
-			}
-		}
-		stage ('Deleting release branch') {
-			steps {
-					sh 'git push origin --delete ${RELEASE_NUMBER}'
+				sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
 				}
+			}
 		}
 	}
 }
