@@ -17,16 +17,19 @@ pipeline {
 					sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
 				}
 			}
+			}
 		stage ('Merging main to develop'){
+			steps {
 			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 					sh 'git checkout develop'
 					sh 'git merge origin/main'	
 					sh 'git pull origin develop'
 					sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
-		}
+					}
+				}
+			}
 		}
 	}
-}
 
 
 
