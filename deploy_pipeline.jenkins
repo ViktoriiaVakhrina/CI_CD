@@ -21,6 +21,7 @@ pipeline {
 	stage ('Deleting release branch') {
 		steps {
 			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
+				sh 'git config --global credential.helper "cache --timeout=3600" '
 				sh 'git push origin https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git --delete release_${RELEASE_NUMBER}'
 		}
 		}
