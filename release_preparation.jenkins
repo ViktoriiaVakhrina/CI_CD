@@ -1,0 +1,18 @@
+pipeline {
+   agent any
+   stages {
+      stage('Creation of release branch')  {
+        steps{ 
+			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
+			sh 'git checkout develop'
+			sh 'git checkout -b release/${RELEASE_NUMBER}'    
+			}
+		}
+	}
+	stage ('Execute tests') {
+		steps {
+			echo 'Tests execution..'
+		}
+	}
+}
+}
