@@ -1,6 +1,3 @@
-sh 'git push origin --delete ${RELEASE_NUMBER}'
-
-
 pipeline {
    agent any
    stages {
@@ -14,10 +11,10 @@ pipeline {
 				sh 'git config --global user.email vakhrinavo@gmail.com'
 				sh 'git config --global user.name "ViktoriiaVakhrina"'
 				withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
-				sh 'git checkout main'
-				sh 'git merge origin/${RELEASE_NUMBER}'	
-				sh 'git pull origin main'
-				sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
+					sh 'git checkout main'
+					sh 'git merge origin/${RELEASE_NUMBER}'	
+					sh 'git pull origin main'
+					sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
 				}
 			}
 		}
