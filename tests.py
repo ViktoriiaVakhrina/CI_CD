@@ -20,3 +20,7 @@ def test_County_total_records (connection):
 def test_League_total_records (connection):
     res_League_total = connection.execute('SELECT COUNT(1) FROM League').fetchone()
     assert res_League_total[0] == 11
+
+def test_Country_PK_unique (connection):
+    res_Country_PK = len(connection.execute('SELECT id FROM Country GROUP BY id HAVING COUNT(id)>1').fetchall())
+    assert res_Country_PK == 0
