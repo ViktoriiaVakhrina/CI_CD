@@ -11,6 +11,7 @@ pipeline {
 				sh 'git config --global user.email vakhrinavo@gmail.com'
 				sh 'git config --global user.name "ViktoriiaVakhrina"'
 				withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
+					sh 'git pull origin/${RELEASE_NUMBER}'
 					sh 'git checkout main'
 					sh 'git merge origin/${RELEASE_NUMBER}'	
 					sh 'git pull origin main'
