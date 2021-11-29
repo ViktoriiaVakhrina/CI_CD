@@ -15,7 +15,6 @@ pipeline {
 					sh 'git merge origin/${RELEASE_NUMBER}'	
 					sh 'git pull origin main'
 					sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
-					sh 'gh release create ${tag}'
 				}
 			}
 			}
