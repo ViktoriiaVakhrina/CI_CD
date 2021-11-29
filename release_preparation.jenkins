@@ -5,7 +5,7 @@ pipeline {
         steps{ 
 			withCredentials ([usernameColonPassword(credentialsId:'Git_Creds', variable: 'creds')]) {
 			sh 'git checkout develop'
-			sh 'git checkout -b release_${RELEASE_NUMBER}' 
+			sh 'git checkout -b release_${RELEASE_NUMBER} develop' 
 			sh 'git push https://${creds}@github.com/ViktoriiaVakhrina/CI_CD.git'
 			}
 		}
